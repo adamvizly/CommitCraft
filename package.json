@@ -42,5 +42,10 @@
     "@vscode/vscode-languagedetection": "^1.0.22",
     "groq-sdk": "^0.9.1",
     "simple-git": "^3.27.0"
+  },
+  "publisher": "adamvizly",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamvizly/CommitCraft"
   }
 }

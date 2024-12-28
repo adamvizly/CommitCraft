@@ -1,71 +1,95 @@
-# commitcraft README
+# CommitCraft: AI-Powered Commit Message Generator
 
-This is the README for your extension "commitcraft". After writing up a brief description, we recommend including the following sections.
+## Overview
+
+CommitCraft is a powerful Visual Studio Code extension that leverages AI to generate meaningful and descriptive git commit messages based on your code changes. Say goodbye to generic commit messages and hello to insightful, context-aware commit descriptions!
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- AI-Powered Commit Messages
+  - Automatically generates concise and meaningful commit messages
+  - Uses advanced Groq AI to analyze code changes
+  - Provides context-aware descriptions of your modifications
 
-For example if there is an image subfolder under your extension project workspace:
+- Intelligent Change Detection
+  - Detects staged changes in your git repository
+  - Works seamlessly with your existing git workflow
 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- User-Friendly Review
+  - Allows you to review and modify the generated commit message
+  - Gives you full control over the final commit description
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- Visual Studio Code (v1.96.0 or later)
+- Git installed and configured
+- Groq API Key (sign up at [Groq Developer Portal](https://www.groq.com/))
 
-## Extension Settings
+## Installation
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+1. Open Visual Studio Code
+2. Go to Extensions (Ctrl+Shift+X)
+3. Search for "CommitCraft"
+4. Click "Install"
 
-For example:
+## Configuration
 
-This extension contributes the following settings:
+1. Obtain a Groq API Key from [Groq](https://www.groq.com/)
+2. Set the API key in your environment variables:
+   ```
+   GROQ_API_KEY=your_groq_api_key_here
+   ```
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## Usage
 
-## Known Issues
+1. Stage your changes in git
+2. Open the Command Palette (Ctrl+Shift+P)
+3. Type "Generate Commit Message"
+4. Review the AI-generated commit message
+5. Modify if needed and confirm
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## Example
 
-## Release Notes
+**Before:**
+```
+# Staged changes: Added new authentication method
+```
 
-Users appreciate release notes as you update your extension.
+**After CommitCraft:**
+```
+feat(auth): Implement secure JWT-based authentication with role-based access control
+```
 
-### 1.0.0
+## Contributing
 
-Initial release of ...
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-### 1.0.1
+## Troubleshooting
 
-Fixed issue #.
+- Ensure your Groq API key is correctly set
+- Check that you have staged changes before generating a commit message
+- Verify your git configuration is correct
 
-### 1.1.0
+## Privacy & Security
 
-Added features X, Y, and Z.
+- CommitCraft only uses the staged changes for generating commit messages
+- Your code changes are not stored or shared beyond the AI generation process
+
+## Dependencies
+
+- Groq SDK
+- Simple Git
+- VSCode API
+
+## License
+
+[MIT License]
+
+## Acknowledgements
+
+- Powered by Groq AI
+- Inspired by developers who care about meaningful commit messages
 
 ---
 
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+**Happy Committing!**
