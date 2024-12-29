@@ -19,7 +19,16 @@ export class ApiKeyManager {
   }
 
   private loadApiKey(): void {
-    // Look for .env file in project root
+    // First, try to get the API key from VSCode settings
+    const config = vscode.workspace.getConfiguration('commitcraft');
+    const settingsApiKey = config.get<string>('groqApiKey');
+
+    if (settingsApiKey) {
+      this.apiKey = settingsApiKey;
+      return;
+    }
+
+    // If no settings key, fall back to .env file method
     const workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders) {
       vscode.window.showWarningMessage('No workspace folder found');
@@ -37,7 +46,7 @@ export class ApiKeyManager {
           vscode.window.showWarningMessage('GROQ_API_KEY not found in .env file');
         }
       } else {
-        vscode.window.showInformationMessage('No .env file found. Please create one with your GROQ_API_KEY.');
+        vscode.window.showInformationMessage('No .env file found. Please set your API key in VSCode settings.');
       }
     } catch (error) {
       vscode.window.showErrorMessage(`Error loading .env file: ${error}`);
@@ -49,30 +58,8 @@ export class ApiKeyManager {
   }
 
   public async setApiKey(key: string): Promise<void> {
-    const workspaceFolders = vscode.workspace.workspaceFolders;
-    if (!workspaceFolders) {
-      vscode.window.showWarningMessage('No workspace folder found');
-      return;
-    }
-
-    const envPath = path.join(workspaceFolders[0].uri.fsPath, '.env');
-
-    try {
-      // Ensure the key is not empty
-      if (!key.trim()) {
-        vscode.window.showWarningMessage('GROQ_API_KEY cannot be empty');
-        return;
-      }
-
-      // Write or update .env file
-      fs.writeFileSync(envPath, `GROQ_API_KEY=${key}`, 'utf8');
-      
-      // Reload the API key
-      this.loadApiKey();
-
-      vscode.window.showInformationMessage('GROQ_API_KEY successfully set');
-    } catch (error) {
-      vscode.window.showErrorMessage(`Error setting GROQ_API_KEY: ${error}`);
-    }
+    const config = vscode.workspace.getConfiguration('commitcraft');
+    await config.update('groqApiKey', key, vscode.ConfigurationTarget.Global);
+    this.apiKey = key;
   }
 }

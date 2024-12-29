@@ -18,7 +18,17 @@
         "command": "commitcraft.generateCommitMessage",
         "title": "Generate Commit Message"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "CommitCraft",
+      "properties": {
+        "commitcraft.groqApiKey": {
+          "type": "string",
+          "description": "Your Groq API Key for CommitCraft extension",
+          "scope": "window"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

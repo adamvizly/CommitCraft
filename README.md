@@ -34,11 +34,18 @@ CommitCraft is a powerful Visual Studio Code extension that leverages AI to gene
 
 ## Configuration
 
-1. Obtain a Groq API Key from [Groq](https://www.groq.com/)
-2. Set the API key in your environment variables:
-   ```
-   GROQ_API_KEY=your_groq_api_key_here
-   ```
+### API Key Configuration
+There are two ways to configure your Groq API Key:
+
+1. **Recommended: VSCode Settings**
+   - Open VSCode Settings (File > Preferences > Settings)
+   - Search for "CommitCraft"
+   - Find the "Groq Api Key" setting
+   - Enter your Groq API Key
+
+2. Alternative: .env File
+   - Create a `.env` file in your project root
+   - Add your API key: `GROQ_API_KEY=your_api_key_here`
 
 ## Usage
 
